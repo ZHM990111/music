@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import searchCss from './search.scss';
 
 function Search(props) {
-    console.log(props, 'props')
+    // console.log(props, 'props')
     let [search, setSearch] = useState('');
     let [showSuggest, setShowSuggest] = useState(false);
     let [showResult, setShowResult] = useState(false);
@@ -17,24 +17,30 @@ function Search(props) {
             props.searchSuggest(search);
         }
         setShowSuggest(!!search);
+        setShowResult(false);
     }, [search]);
 
     function searchChange(e) {
         setSearch(e.target.value)
     }
+    //搜索结果
     function searchResult(e) {
+        window._hmt.push(['_trackEvent', '搜索结果', 'click', '网易云音乐']);
         if (e.keyCode === 13 && search) {
             setShowSuggest(false);
             setShowResult(true);
             props.searchResult(search);
         }
     }
-
+    //歌曲
     function goPlay(e) {
-        if (e.target.tagName.toUpperCase() === 'p') {
+        if (e.target.tagName.toUpperCase() === 'P') {
+            window._hmt.push(['_trackEvent', '点击歌曲', 'click', '网易云音乐']);
             props.history.push({
-                pathname: `/play/${e.target.dataset.id}`
+                pathname: `/song/${e.target.dataset.id}`
             })
+            //搜索结果到歌单
+            props.addSongList({ids:props.search.searchResult.map(item=>item.id).join(',')})
         }
     }
 
@@ -57,14 +63,14 @@ function Search(props) {
                     }
                 </ul>
             </div>
-            <div>
+            <div className={searchCss.suggest}>
                 {showSuggest ? <section>{
                     props.search.searchSuggest.map((item, index) => {
                         return <p key={index}>{item.name + '类型：' + item.type}</p>
                     })
                 }</section> : null}
             </div>
-            <div>
+            <div className={searchCss.result}>
                 {showResult ? <section onClick={goPlay}>{
                     props.search.searchResult.map((item, index) => {
                         return <p key={index} data-id={item.id}>{item.name}</p>
@@ -98,6 +104,12 @@ const mapDispatchToProps = dispatch => {
         searchResult: payload => {
             dispatch({
                 type: 'search/searchResult',
+                payload
+            })
+        },
+        addSongList: payload => {
+            dispatch({
+                type: 'play/songDetail',
                 payload
             })
         }

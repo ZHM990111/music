@@ -46,3 +46,20 @@
   border-radius: 5px;
   margin-top: 10px;
 }
+
+.suggest {
+  width: 80%;
+  position: absolute;
+  left: 20px;
+  top: 44px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.suggest p {
+  font-size: 18px;
+  padding: 5px;
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

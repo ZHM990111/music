@@ -1,6 +1,6 @@
 import { login,People } from '../services/index';
-import { setToken, getToken } from '../utils/index'
-import { routerRedux } from 'dva/router'
+import { setToken} from '../utils/index'
+// import { routerRedux } from 'dva/router'
 
 export default {
     //命名空间
@@ -10,19 +10,19 @@ export default {
         account: {}
     },
     //监听页面切换
-    subscriptions: {
-        setup({ dispatch, history }) {  // eslint-disable-line
-            return history.listen(({ pathname }) => {
-                if (pathname.indexOf('/login') === -1) {
-                    if (!getToken()) {
-                        dispatch(routerRedux.replace({
-                            pathname: `/login?redirect=${decodeURIComponent(pathname)}`,
-                        }))
-                    }
-                }
-            })
-        },
-    },
+    // subscriptions: {
+    //     setup({ dispatch, history }) { 
+    //         return history.listen(({ pathname }) => {
+    //             if (pathname.indexOf('/login') === -1) {
+    //                 if (!getToken()) {
+    //                     dispatch(routerRedux.replace({
+    //                         pathname: `/login?redirect=${decodeURIComponent(pathname)}`,
+    //                     }))
+    //                 }
+    //             }
+    //         })
+    //     },
+    // },
 
     //异步抄做，用generator函数去控制时序
     effects: {

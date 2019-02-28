@@ -15,7 +15,7 @@ function AccountPage(props) {
             <header className={Account.header}>
                 <p></p>
                 <p className={Account.myMusic}>账号</p>
-                <Icon type="ellipsis" size='sm' color='#fff' />
+                <Icon type="ellipsis" size='sm' color='#fff'/>
             </header>
             <section className={Account.list}>
                 <div className={Account.material}>

@@ -3,16 +3,19 @@
 }
 header{
     width: 100%;
-    height: 44px;
+    // height: 44px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
     box-sizing: border-box;
     background: rgb(53, 51, 51);
+    .am-icon{
+        display: inline;
+    }
     input{
         background: #666;
-        height: 50%;
+        height: 38px;
         color: #ccc;
         font-size: 12px;
         flex: 1;
@@ -37,6 +40,8 @@ footer{
         flex: 1;
         text-align: center;
         color: #666;
+        display: inline-block;
+        width: 20%;
         span{
             display: block;
             font-size: 12px;

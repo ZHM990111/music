@@ -22,8 +22,13 @@ function checkStatus(response) {
  * @return {object}           An object containing either "data" or "err"
  */
 export default function request(url, options) {
- url='http://123.206.55.50:14000'+url;
-
+  url = 'http://123.206.55.50:14000' + url;
+  //动态切换域名
+   if(/https:\/\/baidu.com/.test(window.location.host)){
+    //正式环境
+   } else if(/https:\/\/test.baidu.com/.test(window.location.host)) {
+    //测试环境
+   }
   return fetch(url, options)
     .then(checkStatus)
     .then(parseJSON)

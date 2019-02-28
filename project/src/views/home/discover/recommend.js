@@ -16,7 +16,7 @@ function Recommend(props) {
         <div className={recomm.recommend}>
             <Carousel autoplay={true} infinite>
                 {props.index.banner.map((item, index) => {
-                    return <a key={index} href={item.url ? item.url : 'javascript:void(0)'}>
+                    return <a key={index} href={item.url ? item.url : 'javascript'}>
                         <img src={item.imageUrl} alt={item.typeTitle} />
                     </a>
                 })}

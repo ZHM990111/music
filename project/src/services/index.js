@@ -35,4 +35,14 @@ export function searchHot(){
   return request(`/search/hot`)
 }
 
+//播放
+export function songDetail(ids){
+  return request(`/song/detail?ids=${ids}`)
+}
+
+//播放音乐地址
+export function songUrl(ids){
+  return request(`/song/url?id=${ids}`)
+}
+
 
